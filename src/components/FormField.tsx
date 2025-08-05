@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, ErrorMessage} from 'formik';
+import {Field} from 'formik';
 
 interface FormFieldProps {
   name: string;
@@ -9,6 +9,7 @@ interface FormFieldProps {
   helpText?: string;
   errors: any;
   touched: any;
+  values: any;
   required?: boolean;
   autoComplete?: string;
 }
@@ -21,10 +22,14 @@ const FormField: React.FC<FormFieldProps> = ({
   helpText,
   errors,
   touched,
+  values,
   required = false,
   autoComplete = 'off',
 }) => {
-  const hasError = errors[name] && touched[name];
+
+  const hasError = errors[name];
+  const hasValue = values[name] && values[name].toString().trim() !== '';
+  const isValid = hasValue && !hasError;
 
   return (
     <div className="mb-3">
@@ -35,15 +40,15 @@ const FormField: React.FC<FormFieldProps> = ({
         type={type}
         id={name}
         name={name}
-        className={`form-control ${hasError ? 'is-invalid' : ''}`}
+        className={`form-control ${hasError ? 'is-invalid' : isValid ? 'is-valid' : ''}`}
         placeholder={placeholder}
         autoComplete={autoComplete}
       />
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="invalid-feedback"
-      />
+      {errors[name] && (
+        <div className="invalid-feedback d-block">
+          {errors[name]}
+        </div>
+      )}
       {helpText && (
         <small className="form-text text-muted">
           {helpText}

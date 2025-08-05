@@ -51,6 +51,7 @@ const Form: React.FC = () => {
                       placeholder="Введіть ваше ім'я"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
@@ -61,6 +62,7 @@ const Form: React.FC = () => {
                       placeholder="example@gmail.com"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
@@ -72,6 +74,7 @@ const Form: React.FC = () => {
                       helpText="Пароль повинен містити принаймні 8 символів, включаючи велику та малу літери та цифру"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
@@ -82,6 +85,7 @@ const Form: React.FC = () => {
                       placeholder="Введіть ваше місто"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
@@ -91,6 +95,7 @@ const Form: React.FC = () => {
                       type="date"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
@@ -102,6 +107,7 @@ const Form: React.FC = () => {
                       helpText="Формат: +380XXXXXXXXX або 0XXXXXXXXX"
                       errors={errors}
                       touched={touched}
+                      values={values}
                       required
                     />
 
