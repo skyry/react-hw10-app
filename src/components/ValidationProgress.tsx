@@ -12,9 +12,8 @@ const ValidationProgress: React.FC<ValidationProgressProps> = ({errors, touched,
   
   const validFields = fieldNames.filter(field => {
     const hasValue = values[field] && values[field].toString().trim() !== '';
-    const isTouched = touched[field];
     const hasNoError = !errors[field];
-    return hasValue && isTouched && hasNoError;
+    return hasValue && hasNoError;
   }).length;
   
   const totalFields = fieldNames.length;

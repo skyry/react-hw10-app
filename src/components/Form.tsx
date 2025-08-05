@@ -30,14 +30,15 @@ const Form: React.FC = () => {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
                 validateOnMount={true}
+                validateOnChange={true}
+                validateOnBlur={true}
               >
                 {({ isSubmitting, errors, touched, isValid, values }) => {
                   const fieldNames = ['name', 'email', 'password', 'city', 'birthDate', 'phone'];
                   const validFields = fieldNames.filter(field => {
                     const hasValue = values[field] && values[field].toString().trim() !== '';
-                    const isTouched = touched[field];
                     const hasNoError = !errors[field];
-                    return hasValue && isTouched && hasNoError;
+                    return hasValue && hasNoError;
                   }).length;
                   const isFormReallyValid = isValid && validFields === fieldNames.length;
 
